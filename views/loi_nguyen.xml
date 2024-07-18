@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="loi_nguyen.list">
+            <field name="name">loi_nguyen list</field>
+            <field name="model">loi_nguyen</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record id="loi_nguyen_view_form" model="ir.ui.view">
+            <field name="name">loi_nguyen.view.form</field>
+            <field name="model">loi_nguyen</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="loi_nguyen_ids" widget="many2many_tags_link" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="loi_nguyen_act_window" model="ir.actions.act_window">
+            <field name="name">Action Loi Nguyen</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">loi_nguyen</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Data Migration.
+                </p>
+            </field>
+        </record>
+
+        <!-- server action to the one above -->
+        <!--
+      <record model="ir.actions.server" id="loi_nguyen.action_server">
+        <field name="name">loi_nguyen server</field>
+        <field name="model_id" ref="model_loi_nguyen_loi_nguyen"/>
+        <field name="state">code</field>
+        <field name="code">
+          action = {
+            "type": "ir.actions.act_window",
+            "view_mode": "tree,form",
+            "res_model": model._name,
+          }
+        </field>
+      </record>
+  -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="loi_nguyen" id="loi_nguyen.menu_root" />
+
+        <!-- menu categories -->
+
+        <menuitem name="Menu 1" id="loi_nguyen.menu_1" parent="loi_nguyen.menu_root"
+            action="loi_nguyen_act_window" />
+        <!-- <menuitem name="Menu 2" id="loi_nguyen.menu_2" parent="loi_nguyen.menu_root" /> -->
+
+        <!-- actions -->
+        <!--
+      <menuitem name="List" id="loi_nguyen.menu_1_list" parent="loi_nguyen.menu_1"
+                action="loi_nguyen.action_window"/>
+      <menuitem name="Server to list" id="loi_nguyen" parent="loi_nguyen.menu_2"
+                action="loi_nguyen.action_server"/>
+  -->
+    </data>
+</odoo>
